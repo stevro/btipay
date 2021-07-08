@@ -23,7 +23,15 @@ class RegisterPreAuth extends BaseRequest
      */
     public function sendRequest(Order $order)
     {
-        $jsonContent = $this->serializer->serialize($order, 'json');
+
+        $orderJson = $this->serializer->serialize($order, 'json');
+
+        $requestData = $this->serializer->deserialize($orderJson,'array','json');
+
+
+        $requestData['orderBundle'] = $this->serializer->serialize($order->getOrderBundle(),'json');
+        $requestData['jsonParams'] = $this->serializer->serialize($order->getJsonParams(), 'json');
+
 
         try {
             $response = $this->client->request(
@@ -31,7 +39,7 @@ class RegisterPreAuth extends BaseRequest
                 $this->url,
                 [
                     'headers' => [],
-                    RequestOptions::JSON => $jsonContent,
+                    'form_params'=>$requestData,
                 ]
             );
 
@@ -40,10 +48,12 @@ class RegisterPreAuth extends BaseRequest
             $response = new RegisterResponse();
             $response->setErrorCode(ErrorCodes::UNKNOWN);
             $response->setErrorMessage($e->getMessage());
+            return $response;
         } catch (Exception $e) {
             $response = new RegisterResponse();
             $response->setErrorCode(ErrorCodes::UNKNOWN);
             $response->setErrorMessage($e->getMessage());
+            return $response;
         }
     }
 

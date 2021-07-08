@@ -8,7 +8,7 @@ class Currency
 {
 
     /**
-     * @param string $currency
+     * @param string $currency - Alpha3 currency - EUR/USD
      * @return string
      */
     public static function getCurrencyNumericCode($currency)

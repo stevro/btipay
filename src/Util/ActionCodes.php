@@ -1,6 +1,7 @@
 <?php
 
 namespace Stev\BTIPay\Util;
+
 class ActionCodes
 {
 

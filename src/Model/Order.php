@@ -24,6 +24,7 @@ class Order
      * @Serializer\SerializedName("userName")
      */
     private $username;
+
     /**
      * @var string
      * @Serializer\Expose
@@ -61,7 +62,7 @@ class Order
      */
     private $language;
     /**
-     * @var int
+     * @var int | null
      * @Serializer\Expose
      */
     private $installment;
@@ -84,11 +85,13 @@ class Order
     /**
      * @var DateTime | null
      * @Serializer\Expose
+     * @Serializer\Type("DateTime<'Y-m-d'>")
      */
     private $recurrenceStartDate;
     /**
      * @var DateTime | null
      * @Serializer\Expose
+     * @Serializer\Type("DateTime<'Y-m-d'>")
      */
     private $recurrenceEndDate;
     /**
@@ -177,6 +180,8 @@ class Order
     public function setCurrencyAlpha3($currency)
     {
         $this->setCurrency(Currency::getCurrencyNumericCode($currency));
+
+        return $this;
     }
 
     /**
@@ -487,20 +492,5 @@ class Order
 
         return $this;
     }
-
-//    /**
-//     * @return string|null
-//     *
-//     * @Serializer\Expose
-//     * @Serializer\VirtualProperty(name="jsonParams")
-//     */
-//    public function getJsonParamsString()
-//    {
-//        if (!is_array($this->jsonParams) || !$this->jsonParams) {
-//            return null;
-//        }
-//
-//        return json_encode($this->jsonParams);
-//    }
 
 }

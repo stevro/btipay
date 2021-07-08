@@ -4,6 +4,7 @@
 namespace Stev\BTIPay\Responses;
 
 
+use JMS\Serializer\Annotation as Serializer;
 use Stev\BTIPay\Util\ErrorCodes;
 
 class BaseResponse implements ResponseInterface
@@ -12,11 +13,13 @@ class BaseResponse implements ResponseInterface
 
     /**
      * @var int
+     * @Serializer\Type("int")
      */
     protected $errorCode;
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     protected $errorMessage;
 

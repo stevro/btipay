@@ -19,23 +19,24 @@ final class BTIPayClientTest extends TestCase
 
         $currentDate = new \DateTime();
         $order = new Order();
-        $order->setOrderNumber('F1/'.$currentDate->format('d-m-Y'));
-        $order->setEmail('contact.webservice@gmail.com');
-        $order->setAmount(100);
-        $order->setCurrencyAlpha3('RON');
-        $order->setReturnUrl("https://ecclients.btrl.ro:5443/payment/merchants/Test_BT/finish.html");
+        $order->setOrderNumber(uniqid('F', false).'/'.$currentDate->format('d-m-Y'))
+            ->setDescription('Plata Fact F')
+            ->setEmail('contact.webservice@gmail.com')
+            ->setAmount(1000)
+            ->setCurrencyAlpha3('RON')
+            ->setReturnUrl("https://ecclients.btrl.ro:5443/payment/merchants/Test_BT/finish.html");
 
         $order->force3DSecure(true);
 
         $customerDetails = new CustomerDetails();
-        $customerDetails->setEmail('contact.webservice@gmail.com');
-        $customerDetails->setPhone(40743330190);
-        $customerDetails->setContact('Stefan');
+        $customerDetails->setEmail('contact.webservice@gmail.com')
+            ->setPhone(40743333333)
+            ->setContact('Stefan');
 
         $billingInfo = new BillingInfo();
-        $billingInfo->setCountryAlpha2('RO');
-        $billingInfo->setCity('Iasi');
-        $billingInfo->setPostAddress('Elena Doamna 20-22');
+        $billingInfo->setCountryAlpha2('RO')
+            ->setCity('Iasi')
+            ->setPostAddress('Elena Doamna 20-22');
         $customerDetails->setBillingInfo($billingInfo);
 
         $orderBundle = new OrderBundle($currentDate, $customerDetails);
@@ -45,6 +46,8 @@ final class BTIPayClientTest extends TestCase
         $btClient = new BTIPayClient('test_iPay2_api', 'test_iPay2_api1', true);
 
         $response = $btClient->register($order);
+
+        print_r($response);
 
         $this->assertEquals(ErrorCodes::SUCCESS, $response->getErrorCode());
         $this->assertNotEmpty($response->getFormUrl());

@@ -4,20 +4,25 @@
 namespace Stev\BTIPay\Responses;
 
 
+use JMS\Serializer\Annotation as Serializer;
+
 class RegisterResponse extends BaseResponse
 {
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     protected $orderId;
 
     /**
      * @var string|null
+     * @Serializer\Type("string")
      */
     protected $formUrl;
 
     /**
      * @var int
+     * @Serializer\Type("int")
      */
     protected $recurrenceId;
 

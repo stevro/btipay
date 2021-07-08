@@ -63,7 +63,7 @@ class CustomerDetails
      */
     public function setPhone($phone)
     {
-        $this->phone = $phone;
+        $this->phone = (int)$phone;
 
         return $this;
     }

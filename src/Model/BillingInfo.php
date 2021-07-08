@@ -81,6 +81,8 @@ class BillingInfo
     public function setCountryAlpha2($countryName)
     {
         $this->setCountry(Countries::getCountryCodeByAlpha2($countryName));
+
+        return $this;
     }
 
     /**
