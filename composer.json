@@ -8,6 +8,25 @@
             "email": "stev.matei@gmail.com"
         }
     ],
+    "autoload": {
+
+        "psr-4": {
+            "Stev\\BTIPay\\": "src"
+        }
+    },
     "minimum-stability": "dev",
-    "require": {}
+    "prefer-stable": true,
+    "require": {
+        "jms/serializer": "^1.14",
+        "guzzlehttp/guzzle": "^6.5",
+        "alcohol/iso4217": "^3.1"
+    },
+    "config": {
+        "platform": {
+            "php": "5.6"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7"
+    }
 }

@@ -1,0 +1,18 @@
+<?php
+
+namespace Stev\BTIPay\Util;
+class Currency
+{
+
+    /**
+     * @param string $currency
+     * @return string
+     */
+    public static function getCurrencyNumericCode($currency)
+    {
+        $iso4217 = new \Alcohol\ISO4217();
+
+        return (string)$iso4217->getByAlpha3($currency)['numeric'];
+    }
+
+}
