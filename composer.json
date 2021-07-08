@@ -1,0 +1,13 @@
+{
+    "name": "stevro/btipay",
+    "description": "Librarie pentru integrarea sistemului de plati IPay al Bancii Transilvania",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Stefan Matei",
+            "email": "stev.matei@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
