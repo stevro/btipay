@@ -3,8 +3,15 @@
 namespace Stev\BTIPay\Model;
 
 use DateTime;
+use JMS\Serializer\Annotation as Serializer;
 use Stev\BTIPay\Util\Currency;
 
+/**
+ * Class Order
+ * @package Stev\BTIPay\Model
+ *
+ * @Serializer\ExclusionPolicy("all")
+ */
 class Order
 {
 
@@ -13,81 +20,100 @@ class Order
 
     /**
      * @var string
+     * @Serializer\Expose
+     * @Serializer\SerializedName("userName")
      */
     private $username;
     /**
      * @var string
+     * @Serializer\Expose
      */
     private $password;
 
     /**
      * @var string
+     * @Serializer\Expose
      */
     private $orderNumber;
     /**
      * @var int
+     * @Serializer\Expose
      */
     private $amount;
     /**
      * @var string
+     * @Serializer\Expose
      */
     private $currency;
     /**
      * @var string
+     * @Serializer\Expose
      */
     private $returnUrl;
     /**
      * @var string | null
+     * @Serializer\Expose
      */
     private $description;
     /**
      * @var string | null
+     * @Serializer\Expose
      */
     private $language;
     /**
      * @var int
+     * @Serializer\Expose
      */
     private $installment;
     /**
      * @var string
+     * @Serializer\Expose
      */
     private $pageView = self::PAGE_VIEW_DESKTOP;
 
     /**
      * @var string | null
+     * @Serializer\Expose
      */
     private $email;
     /**
      * @var string | null
+     * @Serializer\Expose
      */
     private $recurrenceType;
     /**
      * @var DateTime | null
+     * @Serializer\Expose
      */
     private $recurrenceStartDate;
     /**
      * @var DateTime | null
+     * @Serializer\Expose
      */
     private $recurrenceEndDate;
     /**
      * @var string | null
+     * @Serializer\Expose
      */
     private $childId;
     /**
      * @var string | null
+     * @Serializer\Expose
      */
     private $clientId;
     /**
      * @var string | null
+     * @Serializer\Expose
      */
     private $bindingId;
     /**
      * @var array
      */
-    private $jsonParams;
+    private $jsonParams = [];
 
     /**
      * @var OrderBundle
+     *
      */
     private $orderBundle;
 
@@ -462,5 +488,19 @@ class Order
         return $this;
     }
 
+//    /**
+//     * @return string|null
+//     *
+//     * @Serializer\Expose
+//     * @Serializer\VirtualProperty(name="jsonParams")
+//     */
+//    public function getJsonParamsString()
+//    {
+//        if (!is_array($this->jsonParams) || !$this->jsonParams) {
+//            return null;
+//        }
+//
+//        return json_encode($this->jsonParams);
+//    }
 
 }

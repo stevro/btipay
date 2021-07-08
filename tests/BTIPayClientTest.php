@@ -33,7 +33,7 @@ final class BTIPayClientTest extends TestCase
         $customerDetails->setContact('Stefan');
 
         $billingInfo = new BillingInfo();
-        $billingInfo->setCountry('RO');
+        $billingInfo->setCountryAlpha2('RO');
         $billingInfo->setCity('Iasi');
         $billingInfo->setPostAddress('Elena Doamna 20-22');
         $customerDetails->setBillingInfo($billingInfo);

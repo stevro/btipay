@@ -2,6 +2,8 @@
 
 namespace Stev\BTIPay\Model;
 
+use Stev\BTIPay\Util\Countries;
+
 class DeliveryInfo
 {
 
@@ -71,9 +73,14 @@ class DeliveryInfo
      */
     public function setCountry($country)
     {
-        $this->country = $country;
+        $this->country = (int)$country;
 
         return $this;
+    }
+
+    public function setCountryAlpha2($countryName)
+    {
+        $this->setCountry(Countries::getCountryCodeByAlpha2($countryName));
     }
 
     /**

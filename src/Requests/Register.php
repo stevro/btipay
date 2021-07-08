@@ -23,7 +23,15 @@ class Register extends BaseRequest
      */
     public function sendRequest(Order $order)
     {
-        $jsonContent = $this->serializer->serialize($order, 'json');
+
+        $orderJson = $this->serializer->serialize($order, 'json');
+
+        $requestData = $this->serializer->deserialize($orderJson,'array','json');
+
+
+        $requestData['orderBundle'] = $this->serializer->serialize($order->getOrderBundle(),'json');
+        $requestData['jsonParams'] = $this->serializer->serialize($order->getJsonParams(), 'json');
+
 
         try {
             $response = $this->client->request(
@@ -31,7 +39,7 @@ class Register extends BaseRequest
                 $this->url,
                 [
                     'headers' => [],
-                    RequestOptions::JSON => $jsonContent,
+                    'form_params'=>$requestData,
                 ]
             );
 
@@ -56,7 +64,7 @@ class Register extends BaseRequest
     protected function parseResponse(ResponseInterface $response)
     {
         $responseBody = (string)$response->getBody();
-
+var_dump($responseBody);die;
         return $this->serializer->deserialize($responseBody, RegisterResponse::class, 'json');
     }
 

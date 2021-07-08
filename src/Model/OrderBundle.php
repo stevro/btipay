@@ -5,18 +5,26 @@ namespace Stev\BTIPay\Model;
 use DateTime;
 use JMS\Serializer\Annotation as Serializer;
 
+/**
+ * Class OrderBundle
+ * @package Stev\BTIPay\Model
+ *
+ *  @Serializer\ExclusionPolicy("all")
+ */
 class OrderBundle
 {
 
     /**
      * @var DateTime
      *
+     *  @Serializer\Expose
      * @Serializer\Type("DateTime<'Y-m-d'>")
      */
     private $orderCreationDate;
 
     /**
      * @var CustomerDetails
+     *  @Serializer\Expose
      */
     private $customerDetails;
 
