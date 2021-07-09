@@ -4,7 +4,7 @@
 namespace Stev\BTIPay\Util;
 
 
-use Alcohol\ISO3166\ISO3166;
+use League\ISO3166\ISO3166;
 
 class Countries
 {
@@ -17,7 +17,7 @@ class Countries
     {
         $iso = new ISO3166();
 
-        return (string)$iso->getByAlpha2($countryName)['numeric'];
+        return (string)$iso->alpha2($countryName)['numeric'];
     }
 
 }

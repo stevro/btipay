@@ -20,7 +20,8 @@
     "jms/serializer": "^1.14",
     "guzzlehttp/guzzle": "^6.5",
     "alcohol/iso4217": "^3.1",
-    "alcohol/iso3166": "^4.1"
+    "league/iso3166": "^2.1"
+
   },
   "config": {
     "platform": {
