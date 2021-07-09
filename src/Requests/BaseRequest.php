@@ -10,10 +10,8 @@ use JMS\Serializer\Naming\SerializedNameAnnotationStrategy;
 use JMS\Serializer\SerializationContext;
 use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\SerializerInterface;
-use Psr\Http\Message\ResponseInterface;
-use Stev\BTIPay\Model\Order;
 
-abstract class BaseRequest implements RequestInterface
+class BaseRequest
 {
 
     /**
@@ -55,9 +53,5 @@ abstract class BaseRequest implements RequestInterface
             )
             ->build();
     }
-
-    abstract public function sendRequest(Order $order);
-
-    abstract protected function parseResponse(ResponseInterface $response);
 
 }

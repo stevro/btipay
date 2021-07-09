@@ -2,6 +2,7 @@
 
 namespace Stev\BTIPay\Model;
 
+use JMS\Serializer\Annotation as Serializer;
 use Stev\BTIPay\Util\Countries;
 use Stev\BTIPay\Util\Validator;
 
@@ -10,34 +11,42 @@ class BillingInfo
 
     /**
      * @var string | null
+     * @Serializer\Type("string")
      */
     private $deliveryType;
     /**
      * @var int
+     * @Serializer\Type("int")
      */
     private $country;
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     private $city;
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     private $postAddress;
     /**
      * @var string | null
+     * @Serializer\Type("string")
      */
     private $postAddress2;
     /**
      * @var string | null
+     * @Serializer\Type("string")
      */
     private $postAddress3;
     /**
      * @var string | null
+     * @Serializer\Type("string")
      */
     private $postalCode;
     /**
      * @var string | null
+     * @Serializer\Type("string")
      */
     private $state;
 

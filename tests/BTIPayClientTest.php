@@ -55,12 +55,41 @@ final class BTIPayClientTest extends TestCase
                 ]
             );
             $this->fail();
+            return;
         }
 
         print_r($response);
 
         $this->assertEquals(ErrorCodes::SUCCESS, $response->getErrorCode());
         $this->assertNotEmpty($response->getFormUrl());
+    }
+
+    public function testGetOrderStatusExtendedSuccessful(){
+        Doctrine\Common\Annotations\AnnotationRegistry::registerLoader('class_exists');
+
+        $btClient = new BTIPayClient('test_iPay2_api', 'test_iPay2_api1', true);
+
+        //Run the previous test and finish the payment, then copy the orderId here
+        $orderId = '5ba7984b-9ad0-4ec1-a3b0-5a516d207018';
+
+        try {
+            $response = $btClient->getOrderStatusExtendedByOrderId($orderId);
+        } catch (\Stev\BTIPay\Exceptions\ValidationException $exception) {
+            print_r(
+                [
+                    'property' => $exception->getProperty(),
+                    'value' => $exception->getValue(),
+                    'message' => $exception->getMessage(),
+                ]
+            );
+            $this->fail();
+            return;
+        }
+
+        print_r($response->getErrorMessage());
+
+        $this->assertEquals(ErrorCodes::SUCCESS, $response->getErrorCode());
+        $this->assertEquals(\Stev\BTIPay\Util\ActionCodes::ACTION_CODE_SUCCESS, $response->getActionCode());
     }
 
 }

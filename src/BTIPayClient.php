@@ -2,11 +2,13 @@
 
 namespace Stev\BTIPay;
 
+use Exception;
+use GuzzleHttp\Exception\GuzzleException;
 use Stev\BTIPay\Model\Order;
+use Stev\BTIPay\Requests\GetOrderStatusExtended;
 use Stev\BTIPay\Requests\Register;
 use Stev\BTIPay\Requests\RegisterPreAuth;
 use Stev\BTIPay\Responses\RegisterResponse;
-use Stev\BTIPay\Responses\ResponseInterface;
 use Stev\BTIPay\Util\Validator;
 
 class BTIPayClient
@@ -72,19 +74,52 @@ class BTIPayClient
         return $registerRequest->sendRequest($order);
     }
 
-    public function getOrderStatusExtended()
+    /**
+     * @param $orderId
+     * @return Responses\GetOrderStatusExtendedResponse
+     * @throws Exceptions\RequiredValueException
+     * @throws GuzzleException
+     */
+    public function getOrderStatusExtendedByOrderId($orderId)
     {
+        $getOrderStatusRequest = new GetOrderStatusExtended();
+
+        Validator::validateRequired('orderId', $orderId);
+
+        return $getOrderStatusRequest->sendRequest(
+            ['userName' => $this->username, 'password' => $this->password, 'orderId' => $orderId]
+        );
+    }
+
+    /**
+     * @param $orderNumber
+     * @return Responses\GetOrderStatusExtendedResponse
+     * @throws Exceptions\RequiredValueException
+     * @throws GuzzleException
+     */
+    public function getOrderStatusExtendedByOrderNumber($orderNumber)
+    {
+        $getOrderStatusRequest = new GetOrderStatusExtended();
+
+        Validator::validateRequired('orderNumber', $orderNumber);
+
+        return $getOrderStatusRequest->sendRequest(
+            ['userName' => $this->username, 'password' => $this->password, 'orderNumber' => $orderNumber]
+        );
     }
 
     public function refund()
     {
+        throw new Exception("Not implemented yet");
     }
 
     public function reverse()
     {
+        throw new Exception("Not implemented yet");
     }
 
     public function deposit()
     {
+        throw new Exception("Not implemented yet");
     }
 }

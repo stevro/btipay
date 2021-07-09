@@ -18,13 +18,14 @@ class OrderBundle
      * @var DateTime
      *
      *  @Serializer\Expose
-     * @Serializer\Type("DateTime<'Y-m-d'>")
+     * @Serializer\Type("DateTime<'Y-m-d', '','U'>")
      */
     private $orderCreationDate;
 
     /**
      * @var CustomerDetails
      *  @Serializer\Expose
+     * @Serializer\Type("Stev\BTIPay\Model\CustomerDetails")
      */
     private $customerDetails;
 

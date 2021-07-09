@@ -2,6 +2,7 @@
 
 namespace Stev\BTIPay\Model;
 
+use JMS\Serializer\Annotation as Serializer;
 use Stev\BTIPay\Util\Validator;
 
 class CustomerDetails
@@ -9,26 +10,31 @@ class CustomerDetails
 
     /**
      * @var string
+     *  @Serializer\Type("string")
      */
     private $email;
 
     /**
      * @var int
+     * @Serializer\Type("int")
      */
     private $phone;
 
     /**
      * @var string | null
+     * @Serializer\Type("string")
      */
     private $contact;
 
     /**
      * @var DeliveryInfo
+     * @Serializer\Type("Stev\BTIPay\Model\DeliveryInfo")
      */
     private $deliveryInfo;
 
     /**
      * @var BillingInfo
+     * @Serializer\Type("Stev\BTIPay\Model\BillingInfo")
      */
     private $billingInfo;
 

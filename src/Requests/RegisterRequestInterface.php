@@ -5,7 +5,7 @@ namespace Stev\BTIPay\Requests;
 use Stev\BTIPay\Model\Order;
 use Stev\BTIPay\Responses\ResponseInterface;
 
-interface RequestInterface
+interface RegisterRequestInterface
 {
 
     /**
