@@ -4,7 +4,9 @@ namespace Stev\BTIPay\Model;
 
 use DateTime;
 use JMS\Serializer\Annotation as Serializer;
+use Stev\BTIPay\Exceptions\InvalidValueException;
 use Stev\BTIPay\Util\Currency;
+use Stev\BTIPay\Util\Validator;
 
 /**
  * Class Order
@@ -153,9 +155,14 @@ class Order
      */
     public function setAmount($amount)
     {
-        $this->amount = $amount;
+        $this->amount = (int)$amount;
 
         return $this;
+    }
+
+    public function setAmountInMainUnit($amount)
+    {
+        $this->amount = $amount * 100;
     }
 
     /**
@@ -172,7 +179,7 @@ class Order
      */
     public function setCurrency($currency)
     {
-        $this->currency = $currency;
+        $this->currency = Validator::validateCurrency('order.currency', $currency);
 
         return $this;
     }
@@ -293,7 +300,11 @@ class Order
      */
     public function setEmail($email)
     {
-        $this->email = $email;
+        if (null !== $email) {
+            $this->email = Validator::validateEmail('order.email', $email);
+        } else {
+            $this->email = $email;
+        }
 
         return $this;
     }

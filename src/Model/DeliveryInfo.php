@@ -3,6 +3,7 @@
 namespace Stev\BTIPay\Model;
 
 use Stev\BTIPay\Util\Countries;
+use Stev\BTIPay\Util\Validator;
 
 class DeliveryInfo
 {
@@ -73,7 +74,7 @@ class DeliveryInfo
      */
     public function setCountry($country)
     {
-        $this->country = (int)$country;
+        $this->country = Validator::validateCountry('billingInfo.country',$country);
 
         return $this;
     }

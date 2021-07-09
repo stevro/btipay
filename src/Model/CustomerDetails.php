@@ -2,6 +2,8 @@
 
 namespace Stev\BTIPay\Model;
 
+use Stev\BTIPay\Util\Validator;
+
 class CustomerDetails
 {
 
@@ -31,7 +33,7 @@ class CustomerDetails
     private $billingInfo;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getEmail()
     {
@@ -39,12 +41,16 @@ class CustomerDetails
     }
 
     /**
-     * @param string $email
+     * @param string|null $email
      * @return CustomerDetails
      */
     public function setEmail($email)
     {
-        $this->email = $email;
+        if (null !== $email) {
+            $this->email = Validator::validateEmail('customerDetails.email', $email);
+        } else {
+            $this->email = $email;
+        }
 
         return $this;
     }

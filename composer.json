@@ -21,7 +21,6 @@
     "guzzlehttp/guzzle": "^6.5",
     "alcohol/iso4217": "^3.1",
     "league/iso3166": "^2.1"
-
   },
   "config": {
     "platform": {
