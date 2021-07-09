@@ -16,7 +16,6 @@ final class BTIPayClientTest extends TestCase
     {
         Doctrine\Common\Annotations\AnnotationRegistry::registerLoader('class_exists');
 
-
         $currentDate = new \DateTime();
         $order = new Order();
         $order->setOrderNumber(uniqid('F', false).'/'.$currentDate->format('d-m-Y'))
@@ -45,7 +44,18 @@ final class BTIPayClientTest extends TestCase
 
         $btClient = new BTIPayClient('test_iPay2_api', 'test_iPay2_api1', true);
 
-        $response = $btClient->register($order);
+        try {
+            $response = $btClient->register($order);
+        } catch (\Stev\BTIPay\Exceptions\ValidationException $exception) {
+            print_r(
+                [
+                    'property' => $exception->getProperty(),
+                    'value' => $exception->getValue(),
+                    'message' => $exception->getMessage(),
+                ]
+            );
+            $this->fail();
+        }
 
         print_r($response);
 

@@ -7,6 +7,7 @@ use Stev\BTIPay\Requests\Register;
 use Stev\BTIPay\Requests\RegisterPreAuth;
 use Stev\BTIPay\Responses\RegisterResponse;
 use Stev\BTIPay\Responses\ResponseInterface;
+use Stev\BTIPay\Util\Validator;
 
 class BTIPayClient
 {
@@ -50,6 +51,8 @@ class BTIPayClient
         $order->setUsername($this->username);
         $order->setPassword($this->password);
 
+        Validator::validateOrder($order);
+
         return $registerRequest->sendRequest($order);
     }
 
@@ -60,6 +63,11 @@ class BTIPayClient
     public function registerPreAuth(Order $order)
     {
         $registerRequest = new RegisterPreAuth();
+
+        $order->setUsername($this->username);
+        $order->setPassword($this->password);
+
+        Validator::validateOrder($order);
 
         return $registerRequest->sendRequest($order);
     }
