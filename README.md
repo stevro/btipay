@@ -5,7 +5,7 @@ Librarie pentru integrarea sistemului de plati BT IPay al Bancii Transilvania
 
 # Installation
 
-<code>composer require stevro/btipay</code>
+<code>composer require stev/btipay</code>
 
 # Examples
 ## Send new order
