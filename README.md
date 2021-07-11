@@ -82,3 +82,5 @@ Librarie pentru integrarea sistemului de plati BT IPay al Bancii Transilvania
 
      die($response->getErrorMessage());
      
+# BT Documentation
+https://btepos.ro/documentatie
