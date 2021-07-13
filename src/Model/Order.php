@@ -163,6 +163,8 @@ class Order
     public function setAmountInMainUnit($amount)
     {
         $this->amount = $amount * 100;
+
+        return $this;
     }
 
     /**
@@ -445,6 +447,8 @@ class Order
     public function force3DSecure($use)
     {
         $this->jsonParams['FORCE_3DS2'] = ($use === true ? 'true' : 'false');
+
+        return $this;
     }
 
     /**
