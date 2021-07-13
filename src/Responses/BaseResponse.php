@@ -42,11 +42,6 @@ class BaseResponse implements ResponseInterface
         return $this;
     }
 
-    public function getErrorCodeString()
-    {
-        return ErrorCodes::parseErrorCode($this->errorCode);
-    }
-
     /**
      * @return string
      */
