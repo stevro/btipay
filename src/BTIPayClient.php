@@ -64,7 +64,7 @@ class BTIPayClient
      */
     public function registerPreAuth(Order $order)
     {
-        $registerRequest = new RegisterPreAuth();
+        $registerRequest = new RegisterPreAuth($this->isTest);
 
         $order->setUsername($this->username);
         $order->setPassword($this->password);
@@ -82,7 +82,7 @@ class BTIPayClient
      */
     public function getOrderStatusExtendedByOrderId($orderId)
     {
-        $getOrderStatusRequest = new GetOrderStatusExtended();
+        $getOrderStatusRequest = new GetOrderStatusExtended($this->isTest);
 
         Validator::validateRequired('orderId', $orderId);
 
@@ -99,7 +99,7 @@ class BTIPayClient
      */
     public function getOrderStatusExtendedByOrderNumber($orderNumber)
     {
-        $getOrderStatusRequest = new GetOrderStatusExtended();
+        $getOrderStatusRequest = new GetOrderStatusExtended($this->isTest);
 
         Validator::validateRequired('orderNumber', $orderNumber);
 
