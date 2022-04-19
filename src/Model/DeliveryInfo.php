@@ -109,7 +109,7 @@ class DeliveryInfo
      */
     public function setCity($city)
     {
-        $this->city = $city;
+        $this->city = iconv("UTF-8", "ISO-8859-1//TRANSLIT", $city);
 
         return $this;
     }
@@ -128,7 +128,11 @@ class DeliveryInfo
      */
     public function setPostAddress($postAddress)
     {
-        $this->postAddress = $postAddress;
+        $this->postAddress = iconv("UTF-8", "ISO-8859-1//TRANSLIT", $postAddress);
+
+        if(strlen($this->postAddress) > 50){
+            $this->postAddress = substr($this->postAddress,0,50);
+        }
 
         return $this;
     }
@@ -147,7 +151,11 @@ class DeliveryInfo
      */
     public function setPostAddress2($postAddress2)
     {
-        $this->postAddress2 = $postAddress2;
+        $this->postAddress2 = iconv("UTF-8", "ISO-8859-1//TRANSLIT", $postAddress2);
+
+        if(strlen($this->postAddress2) > 50){
+            $this->postAddress2 = substr($this->postAddress2,0,50);
+        }
 
         return $this;
     }
@@ -166,7 +174,11 @@ class DeliveryInfo
      */
     public function setPostAddress3($postAddress3)
     {
-        $this->postAddress3 = $postAddress3;
+        $this->postAddress3 = iconv("UTF-8", "ISO-8859-1//TRANSLIT", $postAddress3);
+
+        if(strlen($this->postAddress3) > 50){
+            $this->postAddress3 = substr($this->postAddress3,0,50);
+        }
 
         return $this;
     }
