@@ -130,8 +130,8 @@ class BillingInfo
     {
         $this->postAddress = iconv("UTF-8", "ISO-8859-1//TRANSLIT", $postAddress);
 
-        if(strlen($this->postAddress) > 50){
-            $this->postAddress = substr($this->postAddress,0,50);
+        if(strlen($this->postAddress) >= 50){
+            $this->postAddress = str_replace(array("\n","\r"), ' ', substr($this->postAddress,0,49));
         }
 
         return $this;
@@ -153,8 +153,8 @@ class BillingInfo
     {
         $this->postAddress2 = iconv("UTF-8", "ISO-8859-1//TRANSLIT", $postAddress2);
 
-        if(strlen($this->postAddress2) > 50){
-            $this->postAddress2 = substr($this->postAddress2,0,50);
+        if(strlen($this->postAddress2) >= 50){
+            $this->postAddress2 = str_replace(array("\n","\r"), ' ', substr($this->postAddress2,0,49));
         }
 
         return $this;
@@ -176,8 +176,8 @@ class BillingInfo
     {
         $this->postAddress3 = iconv("UTF-8", "ISO-8859-1//TRANSLIT", $postAddress3);
 
-        if(strlen($this->postAddress3) > 50){
-            $this->postAddress3 = substr($this->postAddress3,0,50);
+        if(strlen($this->postAddress3) >= 50){
+            $this->postAddress3 = str_replace(array("\n","\r"), ' ', substr($this->postAddress3,0,49));
         }
 
         return $this;
