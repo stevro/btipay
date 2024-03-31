@@ -13,6 +13,9 @@ use JMS\Serializer\SerializerInterface;
 
 class BaseRequest
 {
+    public const BASE_URL_PROD = 'https://ecclients.btrl.ro';
+
+    public const BASE_URL_TEST = 'https://ecclients-sandbox.btrl.ro';
 
     /**
      * @var Client
@@ -24,7 +27,7 @@ class BaseRequest
      */
     protected $serializer;
 
-    protected $baseUrl = 'https://ecclients.btrl.ro';
+    protected $baseUrl = self::BASE_URL_PROD;
 
     /**
      * Register constructor.
@@ -38,7 +41,7 @@ class BaseRequest
     {
         $this->client = new Client(
             [
-                'base_uri' => ($isTest === true ? $this->baseUrl.':5443' : $this->baseUrl),
+                'base_uri' => ($isTest === true ? self::BASE_URL_TEST : self::BASE_URL_PROD),
                 'verify' => !$isTest,
             ]
         );
