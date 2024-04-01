@@ -6,6 +6,6 @@ namespace Stev\BTIPay\Requests;
 class RegisterPreAuth extends BaseRegisterRequest
 {
 
-    protected $url = '/payment/rest/registerPreAuth.do';
+    protected string $url = '/payment/rest/registerPreAuth.do';
 
 }

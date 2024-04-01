@@ -13,27 +13,27 @@ class BindingInfo
      * @var string | null
      *  @Serializer\Type("string")
      */
-    private $clientId;
+    private ?string $clientId;
 
     /**
      * @var string | null
      * @Serializer\Type("string")
      */
-    private $bindingId;
+    private ?string $bindingId;
 
     /**
      * @return string|null
      */
-    public function getClientId()
+    public function getClientId(): ?string
     {
         return $this->clientId;
     }
 
     /**
      * @param string|null $clientId
-     * @return BindingInfo
+     * @return static
      */
-    public function setClientId($clientId)
+    public function setClientId(?string $clientId): static
     {
         $this->clientId = $clientId;
 
@@ -43,7 +43,7 @@ class BindingInfo
     /**
      * @return string|null
      */
-    public function getBindingId()
+    public function getBindingId(): ?string
     {
         return $this->bindingId;
     }
@@ -52,7 +52,7 @@ class BindingInfo
      * @param string|null $bindingId
      * @return BindingInfo
      */
-    public function setBindingId($bindingId)
+    public function setBindingId(?string $bindingId): static
     {
         $this->bindingId = $bindingId;
 

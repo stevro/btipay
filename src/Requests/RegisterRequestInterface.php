@@ -15,6 +15,6 @@ interface RegisterRequestInterface
      * @param bool $isTest
      * @return ResponseInterface
      */
-    public function sendRequest(Order $order);
+    public function sendRequest(Order $order): ResponseInterface;
 
 }

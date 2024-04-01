@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Stev\BTIPay\Model\GetOrderStatusExtended;
 
 
@@ -11,19 +10,20 @@ class SecureAuthInfo
 
     /**
      * @var string | null
-     *  @Serializer\Type("string")
+     * @Serializer\Type("string")
      */
-    private $eci;
+    private ?string $eci;
+
     /**
      * @var string | null
-     *  @Serializer\Type("string")
+     * @Serializer\Type("string")
      */
-    private $threeDSInfo;
+    private ?string $threeDSInfo;
 
     /**
      * @return string|null
      */
-    public function getEci()
+    public function getEci(): ?string
     {
         return $this->eci;
     }
@@ -32,7 +32,7 @@ class SecureAuthInfo
      * @param string|null $eci
      * @return SecureAuthInfo
      */
-    public function setEci($eci)
+    public function setEci($eci): static
     {
         $this->eci = $eci;
 
@@ -42,7 +42,7 @@ class SecureAuthInfo
     /**
      * @return string|null
      */
-    public function getThreeDSInfo()
+    public function getThreeDSInfo(): ?string
     {
         return $this->threeDSInfo;
     }
@@ -51,12 +51,11 @@ class SecureAuthInfo
      * @param string|null $threeDSInfo
      * @return SecureAuthInfo
      */
-    public function setThreeDSInfo($threeDSInfo)
+    public function setThreeDSInfo($threeDSInfo): static
     {
         $this->threeDSInfo = $threeDSInfo;
 
         return $this;
     }
-
 
 }

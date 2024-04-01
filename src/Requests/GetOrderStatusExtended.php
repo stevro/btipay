@@ -16,14 +16,14 @@ use Stev\BTIPay\Util\ErrorCodes;
 class GetOrderStatusExtended extends BaseRequest implements GetOrderStatusExtendedRequestInterface
 {
 
-    protected $url = '/payment/rest/getOrderStatusExtended.do';
+    protected string $url = '/payment/rest/getOrderStatusExtended.do';
 
     /**
      * @param array $data
      * @return GetOrderStatusExtendedResponse
      * @throws GuzzleException
      */
-    public function sendRequest(array $data)
+    public function sendRequest(array $data): GetOrderStatusExtendedResponse
     {
         try {
             $response = $this->client->request(
@@ -55,7 +55,7 @@ class GetOrderStatusExtended extends BaseRequest implements GetOrderStatusExtend
      * @param ResponseInterface $response
      * @return GetOrderStatusExtendedResponse
      */
-    protected function parseResponse(ResponseInterface $response)
+    protected function parseResponse(ResponseInterface $response): GetOrderStatusExtendedResponse
     {
         $responseBody = (string)$response->getBody();
 

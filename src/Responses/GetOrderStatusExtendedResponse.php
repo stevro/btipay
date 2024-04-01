@@ -19,123 +19,126 @@ class GetOrderStatusExtendedResponse extends BaseResponse
      * @var string
      * @Serializer\Type("string")
      */
-    private $orderNumber;
+    private string $orderNumber;
 
     /**
      * @var int | null
      * @Serializer\Type("int")
      */
-    private $orderStatus;
+    private ?int $orderStatus;
 
     /**
      * @var int
      * @Serializer\Type("int")
      */
-    private $actionCode;
+    private int $actionCode;
 
     /**
      * @var string
      * @Serializer\Type("string")
      */
-    private $actionCodeDescription;
+    private string $actionCodeDescription;
 
     /**
      * @var int
      * @Serializer\Type("int")
      */
-    private $amount;
+    private int $amount;
 
     /**
      * @var int
      * @Serializer\Type("int")
      */
-    private $currency;
+    private int $currency;
 
     /**
      * @var DateTime
      * @Serializer\Type("DateTime<'Y-m-d H:i:s T', '','U'>")
      */
-    private $date;
+    private DateTime $date;
 
     /**
      * @var string | null
      * @Serializer\Type("string")
      */
-    private $orderDescription;
+    private ?string $orderDescription;
+
     /**
      * @var string
      * @Serializer\Type("string")
      */
-    private $ip;
+    private string $ip;
+
     /**
      * @var int | null
      * @Serializer\Type("int")
      */
-    private $recurrenceId;
+    private ?int $recurrenceId;
 
     /**
      * @var CardAuthInfo
      * @Serializer\Type("Stev\BTIPay\Model\GetOrderStatusExtended\CardAuthInfo")
      */
-    private $cardAuthInfo;
+    private CardAuthInfo $cardAuthInfo;
 
     /**
      * @var BindingInfo
      * @Serializer\Type("Stev\BTIPay\Model\GetOrderStatusExtended\BindingInfo")
      */
-    private $bindingInfo;
+    private BindingInfo $bindingInfo;
 
     /**
      * @var array
      * @Serializer\Type("array")
      */
-    private $merchantOrderParams = [];
+    private array $merchantOrderParams = [];
+
     /**
      * @var array
      * @Serializer\Type("array")
      */
-    private $attributes = [];
+    private array $attributes = [];
 
     /**
      * @var DateTime | null
      * @Serializer\Type("DateTime<'Y-m-d H:i:s T', '','U'>")
      */
-    private $authDateTime;
+    private ?DateTime $authDateTime;
 
     /**
      * @var string | null
      * @Serializer\Type("string")
      */
-    private $authRefNum;
+    private ?string $authRefNum;
 
     /**
      * @var string | null
      * @Serializer\Type("string")
      */
-    private $terminalId;
+    private ?string $terminalId;
 
     /**
      * @var PaymentAmountInfo | null
      * @Serializer\Type("Stev\BTIPay\Model\GetOrderStatusExtended\PaymentAmountInfo")
      */
-    private $paymentAmountInfo;
+    private ?PaymentAmountInfo $paymentAmountInfo;
 
     /**
      * @var BankInfo
      * @Serializer\Type("Stev\BTIPay\Model\GetOrderStatusExtended\BankInfo")
      */
-    private $bankInfo;
+    private BankInfo $bankInfo;
 
     /**
      * @var OrderBundle
      * @Serializer\Type("Stev\BTIPay\Model\OrderBundle")
      */
-    private $orderBundle;
+    private OrderBundle $orderBundle;
 
     /**
      * @return string
      */
-    public function getOrderNumber()
+    public function getOrderNumber(): string
     {
         return $this->orderNumber;
     }
@@ -144,7 +147,7 @@ class GetOrderStatusExtendedResponse extends BaseResponse
      * @param string $orderNumber
      * @return GetOrderStatusExtendedResponse
      */
-    public function setOrderNumber($orderNumber)
+    public function setOrderNumber(string $orderNumber): static
     {
         $this->orderNumber = $orderNumber;
 
@@ -154,7 +157,7 @@ class GetOrderStatusExtendedResponse extends BaseResponse
     /**
      * @return int|null
      */
-    public function getOrderStatus()
+    public function getOrderStatus(): ?int
     {
         return $this->orderStatus;
     }
@@ -163,7 +166,7 @@ class GetOrderStatusExtendedResponse extends BaseResponse
      * @param int|null $orderStatus
      * @return GetOrderStatusExtendedResponse
      */
-    public function setOrderStatus($orderStatus)
+    public function setOrderStatus(?int $orderStatus): static
     {
         $this->orderStatus = $orderStatus;
 
@@ -173,7 +176,7 @@ class GetOrderStatusExtendedResponse extends BaseResponse
     /**
      * @return int
      */
-    public function getActionCode()
+    public function getActionCode(): int
     {
         return $this->actionCode;
     }
@@ -182,7 +185,7 @@ class GetOrderStatusExtendedResponse extends BaseResponse
      * @param int $actionCode
      * @return GetOrderStatusExtendedResponse
      */
-    public function setActionCode($actionCode)
+    public function setActionCode(int $actionCode): static
     {
         $this->actionCode = $actionCode;
 
@@ -192,7 +195,7 @@ class GetOrderStatusExtendedResponse extends BaseResponse
     /**
      * @return string
      */
-    public function getActionCodeDescription()
+    public function getActionCodeDescription(): string
     {
         return $this->actionCodeDescription;
     }
@@ -201,7 +204,7 @@ class GetOrderStatusExtendedResponse extends BaseResponse
      * @param string $actionCodeDescription
      * @return GetOrderStatusExtendedResponse
      */
-    public function setActionCodeDescription($actionCodeDescription)
+    public function setActionCodeDescription(string $actionCodeDescription): static
     {
         $this->actionCodeDescription = $actionCodeDescription;
 
@@ -211,7 +214,7 @@ class GetOrderStatusExtendedResponse extends BaseResponse
     /**
      * @return int
      */
-    public function getAmount()
+    public function getAmount(): int
     {
         return $this->amount;
     }
@@ -220,7 +223,7 @@ class GetOrderStatusExtendedResponse extends BaseResponse
      * @param int $amount
      * @return GetOrderStatusExtendedResponse
      */
-    public function setAmount($amount)
+    public function setAmount(int $amount): static
     {
         $this->amount = $amount;
 
@@ -228,9 +231,9 @@ class GetOrderStatusExtendedResponse extends BaseResponse
     }
 
     /**
-     * @return string
+     * @return int|string
      */
-    public function getCurrency()
+    public function getCurrency(): int|string
     {
         return $this->currency;
     }
@@ -239,7 +242,7 @@ class GetOrderStatusExtendedResponse extends BaseResponse
      * @param string $currency
      * @return GetOrderStatusExtendedResponse
      */
-    public function setCurrency($currency)
+    public function setCurrency(string $currency): static
     {
         $this->currency = $currency;
 
@@ -249,7 +252,7 @@ class GetOrderStatusExtendedResponse extends BaseResponse
     /**
      * @return DateTime
      */
-    public function getDate()
+    public function getDate(): DateTime
     {
         return $this->date;
     }
@@ -258,7 +261,7 @@ class GetOrderStatusExtendedResponse extends BaseResponse
      * @param DateTime $date
      * @return GetOrderStatusExtendedResponse
      */
-    public function setDate($date)
+    public function setDate(DateTime $date): static
     {
         $this->date = $date;
 
@@ -268,7 +271,7 @@ class GetOrderStatusExtendedResponse extends BaseResponse
     /**
      * @return string|null
      */
-    public function getOrderDescription()
+    public function getOrderDescription(): ?string
     {
         return $this->orderDescription;
     }
@@ -277,7 +280,7 @@ class GetOrderStatusExtendedResponse extends BaseResponse
      * @param string|null $orderDescription
      * @return GetOrderStatusExtendedResponse
      */
-    public function setOrderDescription($orderDescription)
+    public function setOrderDescription(?string $orderDescription): static
     {
         $this->orderDescription = $orderDescription;
 
@@ -287,7 +290,7 @@ class GetOrderStatusExtendedResponse extends BaseResponse
     /**
      * @return string
      */
-    public function getIp()
+    public function getIp(): string
     {
         return $this->ip;
     }
@@ -296,7 +299,7 @@ class GetOrderStatusExtendedResponse extends BaseResponse
      * @param string $ip
      * @return GetOrderStatusExtendedResponse
      */
-    public function setIp($ip)
+    public function setIp(string $ip): static
     {
         $this->ip = $ip;
 
@@ -306,7 +309,7 @@ class GetOrderStatusExtendedResponse extends BaseResponse
     /**
      * @return int|null
      */
-    public function getRecurrenceId()
+    public function getRecurrenceId(): ?int
     {
         return $this->recurrenceId;
     }
@@ -315,7 +318,7 @@ class GetOrderStatusExtendedResponse extends BaseResponse
      * @param int|null $recurrenceId
      * @return GetOrderStatusExtendedResponse
      */
-    public function setRecurrenceId($recurrenceId)
+    public function setRecurrenceId(?int $recurrenceId): static
     {
         $this->recurrenceId = $recurrenceId;
 
@@ -325,7 +328,7 @@ class GetOrderStatusExtendedResponse extends BaseResponse
     /**
      * @return CardAuthInfo
      */
-    public function getCardAuthInfo()
+    public function getCardAuthInfo(): CardAuthInfo
     {
         return $this->cardAuthInfo;
     }
@@ -334,7 +337,7 @@ class GetOrderStatusExtendedResponse extends BaseResponse
      * @param CardAuthInfo $cardAuthInfo
      * @return GetOrderStatusExtendedResponse
      */
-    public function setCardAuthInfo($cardAuthInfo)
+    public function setCardAuthInfo(CardAuthInfo $cardAuthInfo): static
     {
         $this->cardAuthInfo = $cardAuthInfo;
 
@@ -344,7 +347,7 @@ class GetOrderStatusExtendedResponse extends BaseResponse
     /**
      * @return BindingInfo
      */
-    public function getBindingInfo()
+    public function getBindingInfo(): BindingInfo
     {
         return $this->bindingInfo;
     }
@@ -353,7 +356,7 @@ class GetOrderStatusExtendedResponse extends BaseResponse
      * @param BindingInfo $bindingInfo
      * @return GetOrderStatusExtendedResponse
      */
-    public function setBindingInfo($bindingInfo)
+    public function setBindingInfo(BindingInfo $bindingInfo): static
     {
         $this->bindingInfo = $bindingInfo;
 
@@ -363,7 +366,7 @@ class GetOrderStatusExtendedResponse extends BaseResponse
     /**
      * @return array
      */
-    public function getMerchantOrderParams()
+    public function getMerchantOrderParams(): array
     {
         return $this->merchantOrderParams;
     }
@@ -372,7 +375,7 @@ class GetOrderStatusExtendedResponse extends BaseResponse
      * @param array $merchantOrderParams
      * @return GetOrderStatusExtendedResponse
      */
-    public function setMerchantOrderParams($merchantOrderParams)
+    public function setMerchantOrderParams(array $merchantOrderParams): static
     {
         $this->merchantOrderParams = $merchantOrderParams;
 
@@ -382,7 +385,7 @@ class GetOrderStatusExtendedResponse extends BaseResponse
     /**
      * @return array
      */
-    public function getAttributes()
+    public function getAttributes(): array
     {
         return $this->attributes;
     }
@@ -391,7 +394,7 @@ class GetOrderStatusExtendedResponse extends BaseResponse
      * @param array $attributes
      * @return GetOrderStatusExtendedResponse
      */
-    public function setAttributes($attributes)
+    public function setAttributes(array $attributes): static
     {
         $this->attributes = $attributes;
 
@@ -401,7 +404,7 @@ class GetOrderStatusExtendedResponse extends BaseResponse
     /**
      * @return DateTime|null
      */
-    public function getAuthDateTime()
+    public function getAuthDateTime(): ?DateTime
     {
         return $this->authDateTime;
     }
@@ -410,7 +413,7 @@ class GetOrderStatusExtendedResponse extends BaseResponse
      * @param DateTime|null $authDateTime
      * @return GetOrderStatusExtendedResponse
      */
-    public function setAuthDateTime($authDateTime)
+    public function setAuthDateTime(?DateTime $authDateTime): static
     {
         $this->authDateTime = $authDateTime;
 
@@ -420,7 +423,7 @@ class GetOrderStatusExtendedResponse extends BaseResponse
     /**
      * @return string|null
      */
-    public function getAuthRefNum()
+    public function getAuthRefNum(): ?string
     {
         return $this->authRefNum;
     }
@@ -429,7 +432,7 @@ class GetOrderStatusExtendedResponse extends BaseResponse
      * @param string|null $authRefNum
      * @return GetOrderStatusExtendedResponse
      */
-    public function setAuthRefNum($authRefNum)
+    public function setAuthRefNum(?string $authRefNum): static
     {
         $this->authRefNum = $authRefNum;
 
@@ -439,7 +442,7 @@ class GetOrderStatusExtendedResponse extends BaseResponse
     /**
      * @return string|null
      */
-    public function getTerminalId()
+    public function getTerminalId(): ?string
     {
         return $this->terminalId;
     }
@@ -448,7 +451,7 @@ class GetOrderStatusExtendedResponse extends BaseResponse
      * @param string|null $terminalId
      * @return GetOrderStatusExtendedResponse
      */
-    public function setTerminalId($terminalId)
+    public function setTerminalId(?string $terminalId): static
     {
         $this->terminalId = $terminalId;
 
@@ -458,7 +461,7 @@ class GetOrderStatusExtendedResponse extends BaseResponse
     /**
      * @return PaymentAmountInfo|null
      */
-    public function getPaymentAmountInfo()
+    public function getPaymentAmountInfo(): ?PaymentAmountInfo
     {
         return $this->paymentAmountInfo;
     }
@@ -467,7 +470,7 @@ class GetOrderStatusExtendedResponse extends BaseResponse
      * @param PaymentAmountInfo|null $paymentAmountInfo
      * @return GetOrderStatusExtendedResponse
      */
-    public function setPaymentAmountInfo($paymentAmountInfo)
+    public function setPaymentAmountInfo(?PaymentAmountInfo $paymentAmountInfo): static
     {
         $this->paymentAmountInfo = $paymentAmountInfo;
 
@@ -477,7 +480,7 @@ class GetOrderStatusExtendedResponse extends BaseResponse
     /**
      * @return BankInfo
      */
-    public function getBankInfo()
+    public function getBankInfo(): BankInfo
     {
         return $this->bankInfo;
     }
@@ -486,7 +489,7 @@ class GetOrderStatusExtendedResponse extends BaseResponse
      * @param BankInfo $bankInfo
      * @return GetOrderStatusExtendedResponse
      */
-    public function setBankInfo($bankInfo)
+    public function setBankInfo(BankInfo $bankInfo): static
     {
         $this->bankInfo = $bankInfo;
 
@@ -496,7 +499,7 @@ class GetOrderStatusExtendedResponse extends BaseResponse
     /**
      * @return OrderBundle
      */
-    public function getOrderBundle()
+    public function getOrderBundle(): OrderBundle
     {
         return $this->orderBundle;
     }
@@ -505,7 +508,7 @@ class GetOrderStatusExtendedResponse extends BaseResponse
      * @param OrderBundle $orderBundle
      * @return GetOrderStatusExtendedResponse
      */
-    public function setOrderBundle($orderBundle)
+    public function setOrderBundle(OrderBundle $orderBundle): static
     {
         $this->orderBundle = $orderBundle;
 

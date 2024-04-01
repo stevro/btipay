@@ -3,10 +3,12 @@
 
 use PHPUnit\Framework\TestCase;
 use Stev\BTIPay\BTIPayClient;
+use Stev\BTIPay\Exceptions\ValidationException;
 use Stev\BTIPay\Model\BillingInfo;
 use Stev\BTIPay\Model\CustomerDetails;
 use Stev\BTIPay\Model\Order;
 use Stev\BTIPay\Model\OrderBundle;
+use Stev\BTIPay\Util\ActionCodes;
 use Stev\BTIPay\Util\ErrorCodes;
 
 final class BTIPayClientTest extends TestCase
@@ -16,7 +18,7 @@ final class BTIPayClientTest extends TestCase
     {
         Doctrine\Common\Annotations\AnnotationRegistry::registerLoader('class_exists');
 
-        $currentDate = new \DateTime();
+        $currentDate = new DateTime();
         $order = new Order();
         $order->setOrderNumber(uniqid('F', false).'/'.$currentDate->format('d-m-Y'))
             ->setDescription('Plata Fact F')
@@ -46,7 +48,7 @@ final class BTIPayClientTest extends TestCase
 
         try {
             $response = $btClient->register($order);
-        } catch (\Stev\BTIPay\Exceptions\ValidationException $exception) {
+        } catch (ValidationException $exception) {
             print_r(
                 [
                     'property' => $exception->getProperty(),
@@ -74,7 +76,7 @@ final class BTIPayClientTest extends TestCase
 
         try {
             $response = $btClient->getOrderStatusExtendedByOrderId($orderId);
-        } catch (\Stev\BTIPay\Exceptions\ValidationException $exception) {
+        } catch (ValidationException $exception) {
             print_r(
                 [
                     'property' => $exception->getProperty(),
@@ -89,7 +91,7 @@ final class BTIPayClientTest extends TestCase
         print_r($response->getErrorMessage());
 
         $this->assertEquals(ErrorCodes::SUCCESS, $response->getErrorCode());
-        $this->assertEquals(\Stev\BTIPay\Util\ActionCodes::ACTION_CODE_SUCCESS, $response->getActionCode());
+        $this->assertEquals(ActionCodes::ACTION_CODE_SUCCESS, $response->getActionCode());
     }
 
 }

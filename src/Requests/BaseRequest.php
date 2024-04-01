@@ -20,14 +20,14 @@ class BaseRequest
     /**
      * @var Client
      */
-    protected $client;
+    protected Client $client;
 
     /**
      * @var SerializerInterface
      */
-    protected $serializer;
+    protected SerializerInterface $serializer;
 
-    protected $baseUrl = self::BASE_URL_PROD;
+    protected string $baseUrl = self::BASE_URL_PROD;
 
     /**
      * Register constructor.
@@ -37,7 +37,7 @@ class BaseRequest
         $this->init($isTest);
     }
 
-    protected function init($isTest = true)
+    protected function init($isTest = true): void
     {
         $this->client = new Client(
             [
