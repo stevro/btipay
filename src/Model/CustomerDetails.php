@@ -3,6 +3,7 @@
 namespace Stev\BTIPay\Model;
 
 use JMS\Serializer\Annotation as Serializer;
+use Stev\BTIPay\Exceptions\InvalidValueException;
 use Stev\BTIPay\Util\Validator;
 
 class CustomerDetails
@@ -12,36 +13,36 @@ class CustomerDetails
      * @var string
      *  @Serializer\Type("string")
      */
-    private $email;
+    private string $email;
 
     /**
      * @var int
      * @Serializer\Type("int")
      */
-    private $phone;
+    private int $phone;
 
     /**
      * @var string | null
      * @Serializer\Type("string")
      */
-    private $contact;
+    private ?string $contact;
 
     /**
      * @var DeliveryInfo
      * @Serializer\Type("Stev\BTIPay\Model\DeliveryInfo")
      */
-    private $deliveryInfo;
+    private DeliveryInfo $deliveryInfo;
 
     /**
      * @var BillingInfo
      * @Serializer\Type("Stev\BTIPay\Model\BillingInfo")
      */
-    private $billingInfo;
+    private BillingInfo $billingInfo;
 
     /**
      * @return string|null
      */
-    public function getEmail()
+    public function getEmail(): ?string
     {
         return $this->email;
     }
@@ -49,8 +50,9 @@ class CustomerDetails
     /**
      * @param string|null $email
      * @return CustomerDetails
+     * @throws InvalidValueException
      */
-    public function setEmail($email)
+    public function setEmail($email): static
     {
         if (null !== $email) {
             $this->email = Validator::validateEmail('customerDetails.email', $email);
@@ -64,7 +66,7 @@ class CustomerDetails
     /**
      * @return int
      */
-    public function getPhone()
+    public function getPhone(): int
     {
         return $this->phone;
     }
@@ -73,7 +75,7 @@ class CustomerDetails
      * @param int $phone
      * @return CustomerDetails
      */
-    public function setPhone($phone)
+    public function setPhone($phone): static
     {
         $this->phone = (int)$phone;
 
@@ -83,7 +85,7 @@ class CustomerDetails
     /**
      * @return string|null
      */
-    public function getContact()
+    public function getContact(): ?string
     {
         return $this->contact;
     }
@@ -92,7 +94,7 @@ class CustomerDetails
      * @param string|null $contact
      * @return CustomerDetails
      */
-    public function setContact($contact)
+    public function setContact($contact): static
     {
         $this->contact = $contact;
 
@@ -102,7 +104,7 @@ class CustomerDetails
     /**
      * @return DeliveryInfo
      */
-    public function getDeliveryInfo()
+    public function getDeliveryInfo(): DeliveryInfo
     {
         return $this->deliveryInfo;
     }
@@ -111,7 +113,7 @@ class CustomerDetails
      * @param DeliveryInfo $deliveryInfo
      * @return CustomerDetails
      */
-    public function setDeliveryInfo(DeliveryInfo $deliveryInfo)
+    public function setDeliveryInfo(DeliveryInfo $deliveryInfo): static
     {
         $this->deliveryInfo = $deliveryInfo;
 
@@ -121,7 +123,7 @@ class CustomerDetails
     /**
      * @return BillingInfo
      */
-    public function getBillingInfo()
+    public function getBillingInfo(): BillingInfo
     {
         return $this->billingInfo;
     }
@@ -130,12 +132,11 @@ class CustomerDetails
      * @param BillingInfo $billingInfo
      * @return CustomerDetails
      */
-    public function setBillingInfo(BillingInfo $billingInfo)
+    public function setBillingInfo(BillingInfo $billingInfo): static
     {
         $this->billingInfo = $billingInfo;
 
         return $this;
     }
-
 
 }

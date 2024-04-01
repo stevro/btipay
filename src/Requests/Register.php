@@ -7,6 +7,6 @@ namespace Stev\BTIPay\Requests;
 class Register extends BaseRegisterRequest
 {
 
-    protected $url = '/payment/rest/register.do';
+    protected string $url = '/payment/rest/register.do';
 
 }

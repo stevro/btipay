@@ -15,18 +15,18 @@ class BaseResponse implements ResponseInterface
      * @var int
      * @Serializer\Type("int")
      */
-    protected $errorCode;
+    protected int $errorCode;
 
     /**
      * @var string
      * @Serializer\Type("string")
      */
-    protected $errorMessage;
+    protected string $errorMessage;
 
     /**
      * @return int
      */
-    public function getErrorCode()
+    public function getErrorCode(): int
     {
         return $this->errorCode;
     }
@@ -35,7 +35,7 @@ class BaseResponse implements ResponseInterface
      * @param int $errorCode
      * @return BaseResponse
      */
-    public function setErrorCode($errorCode)
+    public function setErrorCode($errorCode): static
     {
         $this->errorCode = $errorCode;
 
@@ -45,7 +45,7 @@ class BaseResponse implements ResponseInterface
     /**
      * @return string
      */
-    public function getErrorMessage()
+    public function getErrorMessage(): string
     {
         return $this->errorMessage;
     }
@@ -54,7 +54,7 @@ class BaseResponse implements ResponseInterface
      * @param string $errorMessage
      * @return BaseResponse
      */
-    public function setErrorMessage($errorMessage)
+    public function setErrorMessage(string $errorMessage): static
     {
         $this->errorMessage = $errorMessage;
 

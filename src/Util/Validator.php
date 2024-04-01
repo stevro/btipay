@@ -5,6 +5,7 @@ namespace Stev\BTIPay\Util;
 
 
 use Alcohol\ISO4217;
+use Exception;
 use League\ISO3166\ISO3166;
 use Stev\BTIPay\Exceptions\InvalidValueException;
 use Stev\BTIPay\Exceptions\RequiredValueException;
@@ -13,7 +14,10 @@ use Stev\BTIPay\Model\Order;
 class Validator
 {
 
-    public static function validateOrder(Order $order)
+    /**
+     * @throws RequiredValueException
+     */
+    public static function validateOrder(Order $order): void
     {
         self::validateRequired('order.username', $order->getUsername());
         self::validateRequired('order.password', $order->getPassword());
@@ -67,7 +71,7 @@ class Validator
 
         try {
             $iso->numeric($country);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             throw new InvalidValueException($property, $country, 'Invalid country');
         }
 
@@ -79,7 +83,7 @@ class Validator
         $iso = new ISO4217();
         try {
             $iso->getByNumeric($currency);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             throw new InvalidValueException($property, $currency, 'Invalid currency');
         }
 
@@ -91,7 +95,7 @@ class Validator
      * @return string
      * @throws InvalidValueException
      */
-    public static function validateEmail($property, $email)
+    public static function validateEmail($property, string $email): string
     {
         $filteredEmail = filter_var($email, FILTER_VALIDATE_EMAIL);
         if (!$filteredEmail) {

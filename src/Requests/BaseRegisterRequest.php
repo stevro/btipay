@@ -4,7 +4,9 @@
 namespace Stev\BTIPay\Requests;
 
 
+use Exception;
 use GuzzleHttp\Exception\BadResponseException;
+use GuzzleHttp\Exception\GuzzleException;
 use Psr\Http\Message\ResponseInterface;
 use Stev\BTIPay\Model\Order;
 use Stev\BTIPay\Responses\RegisterResponse;
@@ -16,10 +18,9 @@ class BaseRegisterRequest extends BaseRequest implements RegisterRequestInterfac
     /**
      * @param Order $order
      * @return RegisterResponse
-     *
-     *
+     * @throws GuzzleException
      */
-    public function sendRequest(Order $order)
+    public function sendRequest(Order $order): RegisterResponse
     {
         $orderJson = $this->serializer->serialize($order, 'json');
 
@@ -45,7 +46,7 @@ class BaseRegisterRequest extends BaseRequest implements RegisterRequestInterfac
             $response->setErrorMessage($e->getMessage());
 
             return $response;
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $response = new RegisterResponse();
             $response->setErrorCode(ErrorCodes::UNKNOWN);
             $response->setErrorMessage($e->getMessage());
@@ -58,7 +59,7 @@ class BaseRegisterRequest extends BaseRequest implements RegisterRequestInterfac
      * @param ResponseInterface $response
      * @return RegisterResponse
      */
-    protected function parseResponse(ResponseInterface $response)
+    protected function parseResponse(ResponseInterface $response): RegisterResponse
     {
         $responseBody = (string)$response->getBody();
 

@@ -17,115 +17,128 @@ use Stev\BTIPay\Util\Validator;
 class Order
 {
 
-    const PAGE_VIEW_DESKTOP = 'DESKTOP';
-    const PAGE_VIEW_MOBILE = 'MOBILE';
+    public const PAGE_VIEW_DESKTOP = 'DESKTOP';
+
+    public const PAGE_VIEW_MOBILE = 'MOBILE';
 
     /**
      * @var string
      * @Serializer\Expose
      * @Serializer\SerializedName("userName")
      */
-    private $username;
+    private string $username;
 
     /**
      * @var string
      * @Serializer\Expose
      */
-    private $password;
+    private string $password;
 
     /**
      * @var string
      * @Serializer\Expose
      */
-    private $orderNumber;
+    private string $orderNumber;
+
     /**
      * @var int
      * @Serializer\Expose
      */
-    private $amount;
+    private int $amount;
     /**
      * @var string
      * @Serializer\Expose
      */
-    private $currency;
+    private string $currency;
+
     /**
      * @var string
      * @Serializer\Expose
      */
-    private $returnUrl;
+    private string $returnUrl;
+
     /**
      * @var string | null
      * @Serializer\Expose
      */
-    private $description;
+    private ?string $description;
+
     /**
      * @var string | null
      * @Serializer\Expose
      */
-    private $language;
+    private ?string $language;
+
     /**
      * @var int | null
      * @Serializer\Expose
      */
-    private $installment;
+    private ?int $installment;
+
     /**
      * @var string
      * @Serializer\Expose
      */
-    private $pageView = self::PAGE_VIEW_DESKTOP;
+    private string $pageView = self::PAGE_VIEW_DESKTOP;
 
     /**
      * @var string | null
      * @Serializer\Expose
      */
-    private $email;
+    private ?string $email;
+
     /**
      * @var string | null
      * @Serializer\Expose
      */
-    private $recurrenceType;
+    private ?string $recurrenceType;
+
     /**
      * @var DateTime | null
      * @Serializer\Expose
      * @Serializer\Type("DateTime<'Y-m-d'>")
      */
-    private $recurrenceStartDate;
+    private ?DateTime $recurrenceStartDate;
+
     /**
      * @var DateTime | null
      * @Serializer\Expose
      * @Serializer\Type("DateTime<'Y-m-d'>")
      */
-    private $recurrenceEndDate;
+    private ?DateTime $recurrenceEndDate;
+
     /**
      * @var string | null
      * @Serializer\Expose
      */
-    private $childId;
+    private ?string $childId;
+
     /**
      * @var string | null
      * @Serializer\Expose
      */
-    private $clientId;
+    private ?string $clientId;
+
     /**
      * @var string | null
      * @Serializer\Expose
      */
-    private $bindingId;
+    private ?string $bindingId;
+
     /**
      * @var array
      */
-    private $jsonParams = [];
+    private array $jsonParams = [];
 
     /**
      * @var OrderBundle
-     *
      */
-    private $orderBundle;
+    private OrderBundle $orderBundle;
 
     /**
      * @return string
      */
-    public function getOrderNumber()
+    public function getOrderNumber(): string
     {
         return $this->orderNumber;
     }
@@ -134,7 +147,7 @@ class Order
      * @param string $orderNumber
      * @return Order
      */
-    public function setOrderNumber($orderNumber)
+    public function setOrderNumber(string $orderNumber): static
     {
         $this->orderNumber = $orderNumber;
 
@@ -144,7 +157,7 @@ class Order
     /**
      * @return int
      */
-    public function getAmount()
+    public function getAmount(): int
     {
         return $this->amount;
     }
@@ -153,14 +166,14 @@ class Order
      * @param int $amount
      * @return Order
      */
-    public function setAmount($amount)
+    public function setAmount(int $amount): static
     {
         $this->amount = (int)$amount;
 
         return $this;
     }
 
-    public function setAmountInMainUnit($amount)
+    public function setAmountInMainUnit($amount): static
     {
         $this->amount = $amount * 100;
 
@@ -170,7 +183,7 @@ class Order
     /**
      * @return string
      */
-    public function getCurrency()
+    public function getCurrency(): string
     {
         return $this->currency;
     }
@@ -178,15 +191,19 @@ class Order
     /**
      * @param string $currency
      * @return Order
+     * @throws InvalidValueException
      */
-    public function setCurrency($currency)
+    public function setCurrency(string $currency): static
     {
         $this->currency = Validator::validateCurrency('order.currency', $currency);
 
         return $this;
     }
 
-    public function setCurrencyAlpha3($currency)
+    /**
+     * @throws InvalidValueException
+     */
+    public function setCurrencyAlpha3($currency): static
     {
         $this->setCurrency(Currency::getCurrencyNumericCode($currency));
 
@@ -196,7 +213,7 @@ class Order
     /**
      * @return string
      */
-    public function getReturnUrl()
+    public function getReturnUrl(): string
     {
         return $this->returnUrl;
     }
@@ -205,7 +222,7 @@ class Order
      * @param string $returnUrl
      * @return Order
      */
-    public function setReturnUrl($returnUrl)
+    public function setReturnUrl(string $returnUrl): static
     {
         $this->returnUrl = $returnUrl;
 
@@ -215,7 +232,7 @@ class Order
     /**
      * @return string|null
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -224,7 +241,7 @@ class Order
      * @param string|null $description
      * @return Order
      */
-    public function setDescription($description)
+    public function setDescription(?string $description): static
     {
         $this->description = $description;
 
@@ -234,7 +251,7 @@ class Order
     /**
      * @return string|null
      */
-    public function getLanguage()
+    public function getLanguage(): ?string
     {
         return $this->language;
     }
@@ -243,7 +260,7 @@ class Order
      * @param string|null $language
      * @return Order
      */
-    public function setLanguage($language)
+    public function setLanguage(?string $language): static
     {
         $this->language = $language;
 
@@ -253,7 +270,7 @@ class Order
     /**
      * @return int
      */
-    public function getInstallment()
+    public function getInstallment(): ?int
     {
         return $this->installment;
     }
@@ -262,7 +279,7 @@ class Order
      * @param int $installment
      * @return Order
      */
-    public function setInstallment($installment)
+    public function setInstallment(int $installment): static
     {
         $this->installment = $installment;
 
@@ -272,7 +289,7 @@ class Order
     /**
      * @return string
      */
-    public function getPageView()
+    public function getPageView(): string
     {
         return $this->pageView;
     }
@@ -281,7 +298,7 @@ class Order
      * @param string $pageView
      * @return Order
      */
-    public function setPageView($pageView)
+    public function setPageView(string $pageView): static
     {
         $this->pageView = $pageView;
 
@@ -291,7 +308,7 @@ class Order
     /**
      * @return string|null
      */
-    public function getEmail()
+    public function getEmail(): ?string
     {
         return $this->email;
     }
@@ -299,8 +316,9 @@ class Order
     /**
      * @param string|null $email
      * @return Order
+     * @throws InvalidValueException
      */
-    public function setEmail($email)
+    public function setEmail(?string $email): static
     {
         if (null !== $email) {
             $this->email = Validator::validateEmail('order.email', $email);
@@ -314,7 +332,7 @@ class Order
     /**
      * @return string|null
      */
-    public function getRecurrenceType()
+    public function getRecurrenceType(): ?string
     {
         return $this->recurrenceType;
     }
@@ -323,7 +341,7 @@ class Order
      * @param string|null $recurrenceType
      * @return Order
      */
-    public function setRecurrenceType($recurrenceType)
+    public function setRecurrenceType(?string $recurrenceType): static
     {
         $this->recurrenceType = $recurrenceType;
 
@@ -333,7 +351,7 @@ class Order
     /**
      * @return DateTime|null
      */
-    public function getRecurrenceStartDate()
+    public function getRecurrenceStartDate(): ?DateTime
     {
         return $this->recurrenceStartDate;
     }
@@ -342,7 +360,7 @@ class Order
      * @param DateTime|null $recurrenceStartDate
      * @return Order
      */
-    public function setRecurrenceStartDate(DateTime $recurrenceStartDate = null)
+    public function setRecurrenceStartDate(DateTime $recurrenceStartDate = null): static
     {
         $this->recurrenceStartDate = $recurrenceStartDate;
 
@@ -352,7 +370,7 @@ class Order
     /**
      * @return DateTime|null
      */
-    public function getRecurrenceEndDate()
+    public function getRecurrenceEndDate(): ?DateTime
     {
         return $this->recurrenceEndDate;
     }
@@ -361,7 +379,7 @@ class Order
      * @param DateTime|null $recurrenceEndDate
      * @return Order
      */
-    public function setRecurrenceEndDate(DateTime $recurrenceEndDate = null)
+    public function setRecurrenceEndDate(DateTime $recurrenceEndDate = null): static
     {
         $this->recurrenceEndDate = $recurrenceEndDate;
 
@@ -371,7 +389,7 @@ class Order
     /**
      * @return string|null
      */
-    public function getChildId()
+    public function getChildId(): ?string
     {
         return $this->childId;
     }
@@ -380,7 +398,7 @@ class Order
      * @param string|null $childId
      * @return Order
      */
-    public function setChildId($childId)
+    public function setChildId(?string $childId): static
     {
         $this->childId = $childId;
 
@@ -390,7 +408,7 @@ class Order
     /**
      * @return string|null
      */
-    public function getClientId()
+    public function getClientId(): ?string
     {
         return $this->clientId;
     }
@@ -399,7 +417,7 @@ class Order
      * @param string|null $clientId
      * @return Order
      */
-    public function setClientId($clientId)
+    public function setClientId(?string $clientId): static
     {
         $this->clientId = $clientId;
 
@@ -409,7 +427,7 @@ class Order
     /**
      * @return string|null
      */
-    public function getBindingId()
+    public function getBindingId(): ?string
     {
         return $this->bindingId;
     }
@@ -418,7 +436,7 @@ class Order
      * @param string|null $bindingId
      * @return Order
      */
-    public function setBindingId($bindingId)
+    public function setBindingId(?string $bindingId): static
     {
         $this->bindingId = $bindingId;
 
@@ -428,7 +446,7 @@ class Order
     /**
      * @return array
      */
-    public function getJsonParams()
+    public function getJsonParams(): array
     {
         return $this->jsonParams;
     }
@@ -437,14 +455,14 @@ class Order
      * @param array $jsonParams
      * @return Order
      */
-    public function setJsonParams(array $jsonParams = [])
+    public function setJsonParams(array $jsonParams = []): static
     {
         $this->jsonParams = $jsonParams;
 
         return $this;
     }
 
-    public function force3DSecure($use)
+    public function force3DSecure($use): static
     {
         $this->jsonParams['FORCE_3DS2'] = ($use === true ? 'true' : 'false');
 
@@ -454,7 +472,7 @@ class Order
     /**
      * @return OrderBundle
      */
-    public function getOrderBundle()
+    public function getOrderBundle(): OrderBundle
     {
         return $this->orderBundle;
     }
@@ -463,7 +481,7 @@ class Order
      * @param OrderBundle $orderBundle
      * @return Order
      */
-    public function setOrderBundle(OrderBundle $orderBundle)
+    public function setOrderBundle(OrderBundle $orderBundle): static
     {
         $this->orderBundle = $orderBundle;
 
@@ -473,7 +491,7 @@ class Order
     /**
      * @return string
      */
-    public function getUsername()
+    public function getUsername(): string
     {
         return $this->username;
     }
@@ -482,7 +500,7 @@ class Order
      * @param string $username
      * @return Order
      */
-    public function setUsername($username)
+    public function setUsername($username): static
     {
         $this->username = $username;
 
@@ -492,7 +510,7 @@ class Order
     /**
      * @return string
      */
-    public function getPassword()
+    public function getPassword(): string
     {
         return $this->password;
     }
@@ -501,7 +519,7 @@ class Order
      * @param string $password
      * @return Order
      */
-    public function setPassword($password)
+    public function setPassword(string $password): static
     {
         $this->password = $password;
 

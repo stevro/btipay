@@ -8,15 +8,15 @@ interface ResponseInterface
     /*
      * 1 Phase
      */
-    const STATUS_CREATED = 'CREATED';
-    const STATUS_DEPOSITED = 'DEPOSITED';
-    const STATUS_REFUNDED = 'REFUNDED';
-    const STATUS_DECLINED = 'DECLINED';
+    public const STATUS_CREATED = 'CREATED';
+    public const STATUS_DEPOSITED = 'DEPOSITED';
+    public const STATUS_REFUNDED = 'REFUNDED';
+    public const STATUS_DECLINED = 'DECLINED';
 
     /*
      * 2 Phase
      */
-    const STATUS_APPROVED = 'APPROVED';
-    const STATUS_REVERSED = 'REVERSED';
+    public const STATUS_APPROVED = 'APPROVED';
+    public const STATUS_REVERSED = 'REVERSED';
 
 }

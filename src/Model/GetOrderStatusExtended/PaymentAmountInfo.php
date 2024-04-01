@@ -13,27 +13,30 @@ class PaymentAmountInfo
      * @var int | null
      * @Serializer\Type("int")
      */
-    private $approvedAmount;
+    private ?int $approvedAmount;
+
     /**
      * @var int | null
      *  @Serializer\Type("int")
      */
-    private $depositedAmount;
+    private ?int $depositedAmount;
+
     /**
      * @var int | null
      *  @Serializer\Type("int")
      */
-    private $refundedAmount;
+    private ?int $refundedAmount;
+
     /**
      * @var string | null
      *  @Serializer\Type("int")
      */
-    private $paymentState;
+    private ?string $paymentState;
 
     /**
      * @return int|null
      */
-    public function getApprovedAmount()
+    public function getApprovedAmount(): ?int
     {
         return $this->approvedAmount;
     }
@@ -42,7 +45,7 @@ class PaymentAmountInfo
      * @param int|null $approvedAmount
      * @return PaymentAmountInfo
      */
-    public function setApprovedAmount($approvedAmount)
+    public function setApprovedAmount(?int $approvedAmount): PaymentAmountInfo
     {
         $this->approvedAmount = $approvedAmount;
 
@@ -52,7 +55,7 @@ class PaymentAmountInfo
     /**
      * @return int|null
      */
-    public function getDepositedAmount()
+    public function getDepositedAmount(): ?int
     {
         return $this->depositedAmount;
     }
@@ -61,7 +64,7 @@ class PaymentAmountInfo
      * @param int|null $depositedAmount
      * @return PaymentAmountInfo
      */
-    public function setDepositedAmount($depositedAmount)
+    public function setDepositedAmount(?int $depositedAmount): PaymentAmountInfo
     {
         $this->depositedAmount = $depositedAmount;
 
@@ -71,7 +74,7 @@ class PaymentAmountInfo
     /**
      * @return int|null
      */
-    public function getRefundedAmount()
+    public function getRefundedAmount(): ?int
     {
         return $this->refundedAmount;
     }
@@ -80,7 +83,7 @@ class PaymentAmountInfo
      * @param int|null $refundedAmount
      * @return PaymentAmountInfo
      */
-    public function setRefundedAmount($refundedAmount)
+    public function setRefundedAmount($refundedAmount): static
     {
         $this->refundedAmount = $refundedAmount;
 
@@ -90,7 +93,7 @@ class PaymentAmountInfo
     /**
      * @return string|null
      */
-    public function getPaymentState()
+    public function getPaymentState(): ?string
     {
         return $this->paymentState;
     }
@@ -99,13 +102,11 @@ class PaymentAmountInfo
      * @param string|null $paymentState
      * @return PaymentAmountInfo
      */
-    public function setPaymentState($paymentState)
+    public function setPaymentState($paymentState): static
     {
         $this->paymentState = $paymentState;
 
         return $this;
     }
-
-
 
 }

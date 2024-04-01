@@ -13,36 +13,36 @@ class CardAuthInfo
      * @var int | null
      * @Serializer\Type("int")
      */
-    private $expiration;
+    private ?int $expiration;
 
     /**
      * @var string | null
      * @Serializer\Type("string")
      */
-    private $pan;
+    private ?string $pan;
 
     /**
      * @var string | null
      * @Serializer\Type("string")
      */
-    private $cardholderName;
+    private ?string $cardholderName;
 
     /**
      * @var string | null
      * @Serializer\Type("string")
      */
-    private $approvalCode;
+    private ?string $approvalCode;
 
     /**
      * @var SecureAuthInfo
      * @Serializer\Type("Stev\BTIPay\Model\GetOrderStatusExtended\SecureAuthInfo")
      */
-    private $secureAuthInfo;
+    private SecureAuthInfo $secureAuthInfo;
 
     /**
      * @return int|null
      */
-    public function getExpiration()
+    public function getExpiration(): ?int
     {
         return $this->expiration;
     }
@@ -51,7 +51,7 @@ class CardAuthInfo
      * @param int|null $expiration
      * @return CardAuthInfo
      */
-    public function setExpiration($expiration)
+    public function setExpiration(?int $expiration): static
     {
         $this->expiration = $expiration;
 
@@ -61,7 +61,7 @@ class CardAuthInfo
     /**
      * @return string|null
      */
-    public function getPan()
+    public function getPan(): ?string
     {
         return $this->pan;
     }
@@ -70,7 +70,7 @@ class CardAuthInfo
      * @param string|null $pan
      * @return CardAuthInfo
      */
-    public function setPan($pan)
+    public function setPan(?string $pan): static
     {
         $this->pan = $pan;
 
@@ -80,7 +80,7 @@ class CardAuthInfo
     /**
      * @return string|null
      */
-    public function getCardholderName()
+    public function getCardholderName(): ?string
     {
         return $this->cardholderName;
     }
@@ -89,7 +89,7 @@ class CardAuthInfo
      * @param string|null $cardholderName
      * @return CardAuthInfo
      */
-    public function setCardholderName($cardholderName)
+    public function setCardholderName(?string $cardholderName): static
     {
         $this->cardholderName = $cardholderName;
 
@@ -99,7 +99,7 @@ class CardAuthInfo
     /**
      * @return string|null
      */
-    public function getApprovalCode()
+    public function getApprovalCode(): ?string
     {
         return $this->approvalCode;
     }
@@ -108,7 +108,7 @@ class CardAuthInfo
      * @param string|null $approvalCode
      * @return CardAuthInfo
      */
-    public function setApprovalCode($approvalCode)
+    public function setApprovalCode(?string $approvalCode): static
     {
         $this->approvalCode = $approvalCode;
 
@@ -118,7 +118,7 @@ class CardAuthInfo
     /**
      * @return SecureAuthInfo
      */
-    public function getSecureAuthInfo()
+    public function getSecureAuthInfo(): SecureAuthInfo
     {
         return $this->secureAuthInfo;
     }
@@ -127,12 +127,11 @@ class CardAuthInfo
      * @param SecureAuthInfo $secureAuthInfo
      * @return CardAuthInfo
      */
-    public function setSecureAuthInfo($secureAuthInfo)
+    public function setSecureAuthInfo(SecureAuthInfo $secureAuthInfo): static
     {
         $this->secureAuthInfo = $secureAuthInfo;
 
         return $this;
     }
-
 
 }

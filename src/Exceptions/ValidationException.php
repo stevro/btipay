@@ -4,7 +4,9 @@
 namespace Stev\BTIPay\Exceptions;
 
 
-class ValidationException extends \Exception
+use Exception;
+
+class ValidationException extends Exception
 {
 
     /**

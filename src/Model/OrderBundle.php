@@ -20,14 +20,14 @@ class OrderBundle
      *  @Serializer\Expose
      * @Serializer\Type("DateTime<'Y-m-d', '','U'>")
      */
-    private $orderCreationDate;
+    private DateTime $orderCreationDate;
 
     /**
      * @var CustomerDetails
      *  @Serializer\Expose
      * @Serializer\Type("Stev\BTIPay\Model\CustomerDetails")
      */
-    private $customerDetails;
+    private CustomerDetails $customerDetails;
 
     /**
      * OrderBundle constructor.
@@ -43,7 +43,7 @@ class OrderBundle
     /**
      * @return DateTime
      */
-    public function getOrderCreationDate()
+    public function getOrderCreationDate(): DateTime
     {
         return $this->orderCreationDate;
     }
@@ -52,7 +52,7 @@ class OrderBundle
      * @param DateTime $orderCreationDate
      * @return OrderBundle
      */
-    public function setOrderCreationDate(DateTime $orderCreationDate)
+    public function setOrderCreationDate(DateTime $orderCreationDate): static
     {
         $this->orderCreationDate = $orderCreationDate;
 
@@ -62,7 +62,7 @@ class OrderBundle
     /**
      * @return CustomerDetails
      */
-    public function getCustomerDetails()
+    public function getCustomerDetails(): CustomerDetails
     {
         return $this->customerDetails;
     }
@@ -71,12 +71,11 @@ class OrderBundle
      * @param CustomerDetails $customerDetails
      * @return OrderBundle
      */
-    public function setCustomerDetails(CustomerDetails $customerDetails)
+    public function setCustomerDetails(CustomerDetails $customerDetails): static
     {
         $this->customerDetails = $customerDetails;
 
         return $this;
     }
-
 
 }
