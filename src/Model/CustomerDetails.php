@@ -28,10 +28,9 @@ class CustomerDetails
     private ?string $contact;
 
     /**
-     * @var DeliveryInfo
      * @Serializer\Type("Stev\BTIPay\Model\DeliveryInfo")
      */
-    private DeliveryInfo $deliveryInfo;
+    private ?DeliveryInfo $deliveryInfo = null;
 
     /**
      * @var BillingInfo
@@ -102,18 +101,18 @@ class CustomerDetails
     }
 
     /**
-     * @return DeliveryInfo
+     * @return DeliveryInfo|null
      */
-    public function getDeliveryInfo(): DeliveryInfo
+    public function getDeliveryInfo(): ?DeliveryInfo
     {
         return $this->deliveryInfo;
     }
 
     /**
-     * @param DeliveryInfo $deliveryInfo
+     * @param DeliveryInfo|null $deliveryInfo
      * @return CustomerDetails
      */
-    public function setDeliveryInfo(DeliveryInfo $deliveryInfo): static
+    public function setDeliveryInfo(?DeliveryInfo $deliveryInfo): static
     {
         $this->deliveryInfo = $deliveryInfo;
 

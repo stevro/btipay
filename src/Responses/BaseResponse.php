@@ -12,10 +12,9 @@ class BaseResponse implements ResponseInterface
 
 
     /**
-     * @var int
      * @Serializer\Type("int")
      */
-    protected int $errorCode;
+    protected ?int $errorCode = null;
 
     /**
      * @var string
@@ -24,18 +23,18 @@ class BaseResponse implements ResponseInterface
     protected string $errorMessage;
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getErrorCode(): int
+    public function getErrorCode(): ?int
     {
         return $this->errorCode;
     }
 
     /**
-     * @param int $errorCode
+     * @param int|null $errorCode
      * @return BaseResponse
      */
-    public function setErrorCode($errorCode): static
+    public function setErrorCode(?int $errorCode): static
     {
         $this->errorCode = $errorCode;
 
