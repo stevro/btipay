@@ -13,6 +13,12 @@
       "Stev\\BTIPay\\": "src"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "Stev\\BTIPay\\Fixtures\\": "tests/fixtures",
+      "Stev\\BTIPay\\Tests\\": "tests/src"
+    }
+  },
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
