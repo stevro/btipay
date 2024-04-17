@@ -5,7 +5,7 @@ namespace Stev\BTIPay\Tests;
 use PHPUnit\Framework\TestCase;
 use Stev\BTIPay\BTIPayClient;
 use Stev\BTIPay\Exceptions\ValidationException;
-use Stev\BTIPay\Fixtures\Factories\OrderFactory;
+use Stev\BTIPay\Tests\Fixtures\Factories\OrderFactory;
 use Stev\BTIPay\Util\ActionCodes;
 use Stev\BTIPay\Util\ErrorCodes;
 

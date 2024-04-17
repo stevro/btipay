@@ -1,6 +1,6 @@
 <?php
 
-namespace Stev\BTIPay\Fixtures\Factories;
+namespace Stev\BTIPay\Tests\Fixtures\Factories;
 
 use DateTime;
 use Stev\BTIPay\Model\BillingInfo;

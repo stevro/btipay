@@ -7,7 +7,7 @@ use JMS\Serializer\Naming\SerializedNameAnnotationStrategy;
 use JMS\Serializer\SerializationContext;
 use JMS\Serializer\SerializerBuilder;
 use PHPUnit\Framework\TestCase;
-use Stev\BTIPay\Fixtures\Factories\OrderFactory;
+use Stev\BTIPay\Tests\Fixtures\Factories\OrderFactory;
 
 use function PHPUnit\Framework\assertSame;
 

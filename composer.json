@@ -15,7 +15,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Stev\\BTIPay\\Fixtures\\": "tests/fixtures",
+      "Stev\\BTIPay\\Tests\\Fixtures\\": "tests/fixtures",
       "Stev\\BTIPay\\Tests\\": "tests/src"
     }
   },
