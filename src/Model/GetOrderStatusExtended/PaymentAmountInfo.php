@@ -31,7 +31,7 @@ class PaymentAmountInfo
      * @var string | null
      *  @Serializer\Type("int")
      */
-    private ?string $paymentState;
+    private null|string|int $paymentState;
 
     /**
      * @return int|null
