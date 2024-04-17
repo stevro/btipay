@@ -24,9 +24,8 @@ class Order
     /**
      * @var string
      * @Serializer\Expose
-     * @Serializer\SerializedName("userName")
      */
-    private string $username;
+    private string $userName;
 
     /**
      * @var string
@@ -493,7 +492,7 @@ class Order
      */
     public function getUsername(): string
     {
-        return $this->username;
+        return $this->userName;
     }
 
     /**
@@ -502,7 +501,7 @@ class Order
      */
     public function setUsername($username): static
     {
-        $this->username = $username;
+        $this->userName = $username;
 
         return $this;
     }
