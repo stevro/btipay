@@ -10,6 +10,7 @@ use JMS\Serializer\Naming\SerializedNameAnnotationStrategy;
 use JMS\Serializer\SerializationContext;
 use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\SerializerInterface;
+use Stev\BTIPay\Util\Serializer;
 
 class BaseRequest
 {
@@ -46,15 +47,7 @@ class BaseRequest
             ]
         );
 
-        $this->serializer = SerializerBuilder::create()
-            ->setPropertyNamingStrategy(new SerializedNameAnnotationStrategy(new IdenticalPropertyNamingStrategy()))
-            ->setSerializationContextFactory(
-                function () {
-                    return SerializationContext::create()
-                        ->setSerializeNull(false);
-                }
-            )
-            ->build();
+        $this->serializer = Serializer::getSerializer();
     }
 
 }

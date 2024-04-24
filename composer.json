@@ -27,7 +27,8 @@
     "jms/serializer": "^3.29",
     "guzzlehttp/guzzle": "^6.5|^7.0",
     "alcohol/iso4217": "^4.1",
-    "league/iso3166": "^4.1"
+    "league/iso3166": "^4.1",
+    "doctrine/annotations": "^2.0"
   },
   "config": {
     "platform": {
@@ -35,7 +36,6 @@
     }
   },
   "require-dev": {
-    "phpunit/phpunit": "^7.0|^8.0|^9.0",
-    "doctrine/annotations": "^2.0"
+    "phpunit/phpunit": "^7.0|^8.0|^9.0"
   }
 }
