@@ -1,15 +1,16 @@
 <?php
 
-namespace Stev\BTIPay\Util;
+namespace Stev\BTIPay\Serializer;
 
 use JMS\Serializer\Naming\IdenticalPropertyNamingStrategy;
 use JMS\Serializer\Naming\SerializedNameAnnotationStrategy;
 use JMS\Serializer\SerializationContext;
+use JMS\Serializer\Serializer;
 use JMS\Serializer\SerializerBuilder;
 
-class Serializer
+class SerializerFactory
 {
-    protected static ?\JMS\Serializer\Serializer $serializer = null;
+    protected static ?Serializer $serializer = null;
 
     public static function getSerializer()
     {
@@ -33,7 +34,7 @@ class Serializer
         return self::$serializer;
     }
 
-    public static function serialize($object)
+    public static function serialize($object): string
     {
         return self::getSerializer()->serialize($object, 'json');
     }

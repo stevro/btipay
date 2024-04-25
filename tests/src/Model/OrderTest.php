@@ -2,14 +2,9 @@
 
 namespace Stev\BTIPay\Tests\Model;
 
-use JMS\Serializer\Naming\IdenticalPropertyNamingStrategy;
-use JMS\Serializer\Naming\SerializedNameAnnotationStrategy;
-use JMS\Serializer\SerializationContext;
-use JMS\Serializer\SerializerBuilder;
 use PHPUnit\Framework\TestCase;
+use Stev\BTIPay\Serializer\SerializerFactory;
 use Stev\BTIPay\Tests\Fixtures\Factories\OrderFactory;
-
-use Stev\BTIPay\Util\Serializer;
 
 use function PHPUnit\Framework\assertSame;
 
@@ -22,7 +17,7 @@ class OrderTest extends TestCase
         $order->setUsername(BTIPAY_USERNAME);
         $order->setPassword(BTIPAY_PASSWORD);
 
-        $serializer = Serializer::getSerializer();
+        $serializer = SerializerFactory::getSerializer();
 
         $orderJson = $serializer->serialize($order, 'json');
         assertSame(

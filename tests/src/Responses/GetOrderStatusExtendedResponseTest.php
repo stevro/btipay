@@ -4,7 +4,7 @@ namespace Stev\BTIPay\Tests\Responses;
 
 use PHPUnit\Framework\TestCase;
 use Stev\BTIPay\Responses\GetOrderStatusExtendedResponse;
-use Stev\BTIPay\Util\Serializer;
+use Stev\BTIPay\Serializer\SerializerFactory;
 
 use function PHPUnit\Framework\assertInstanceOf;
 
@@ -14,7 +14,7 @@ class GetOrderStatusExtendedResponseTest extends TestCase
     public function test_deserialize()
     {
         $responseBody = file_get_contents(TESTS_FIXTURE_PATH.'/responses/OrderStatus/basic.json');
-        $serializer = Serializer::getSerializer();
+        $serializer = SerializerFactory::getSerializer();
 
         $response = $serializer->deserialize($responseBody, GetOrderStatusExtendedResponse::class, 'json');
 
