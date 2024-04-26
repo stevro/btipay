@@ -5,11 +5,8 @@ namespace Stev\BTIPay\Requests;
 
 
 use GuzzleHttp\Client;
-use JMS\Serializer\Naming\IdenticalPropertyNamingStrategy;
-use JMS\Serializer\Naming\SerializedNameAnnotationStrategy;
-use JMS\Serializer\SerializationContext;
-use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\SerializerInterface;
+use Stev\BTIPay\Serializer\SerializerFactory;
 
 class BaseRequest
 {
@@ -46,15 +43,7 @@ class BaseRequest
             ]
         );
 
-        $this->serializer = SerializerBuilder::create()
-            ->setPropertyNamingStrategy(new SerializedNameAnnotationStrategy(new IdenticalPropertyNamingStrategy()))
-            ->setSerializationContextFactory(
-                function () {
-                    return SerializationContext::create()
-                        ->setSerializeNull(false);
-                }
-            )
-            ->build();
+        $this->serializer = SerializerFactory::getSerializer();
     }
 
 }
