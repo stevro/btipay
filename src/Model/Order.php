@@ -148,7 +148,7 @@ class Order
      */
     public function setOrderNumber(string $orderNumber): static
     {
-        $this->orderNumber = $orderNumber;
+        $this->orderNumber = substr($orderNumber, 0,32);
 
         return $this;
     }
@@ -242,7 +242,7 @@ class Order
      */
     public function setDescription(?string $description): static
     {
-        $this->description = $description;
+        $this->description = iconv("UTF-8", "ISO-8859-1//TRANSLIT", substr($description,0,512));
 
         return $this;
     }
